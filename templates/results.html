@@ -8,10 +8,34 @@
 {% block content %}
 
 
-    <h1>What is cancer?</h1>
-        <p>
-            Cancer is a disease in which body tissue is destroyed by abnnormal cells dividing uncontrollably. This is very dangerous, especially if it is not treated in the beginning stages.
-        </p>
+    <h1>Results for {{ session['lastName']}}, {{ session['firstName']}}</h1>
+        
+        <!--https://jinja.palletsprojects.com/en/3.1.x/templates/#if-->
+        {% if session['q1'] == 4}
+            Question 1 is correct.
+        {% else %}
+            Question 1 is incorrect.
+        {% endif %}
+
+        <br>
+
+        {% if session['q2'] == true}
+            Question 2 is correct.
+        {% else %}
+            Question 2 is incorrect.
+        {% endif %}
+
+        <br>
+
+        {% if session['q3'] == false}
+            Question 3 is correct.
+        {% else %}
+            Question 3 is incorrect.
+        {% endif %}
+
+        <br>
+
+        <!--https://jinja.palletsprojects.com/en/3.0.x/templates/-->
 
 
 {% endblock %}

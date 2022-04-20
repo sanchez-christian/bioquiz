@@ -17,9 +17,9 @@ app.secret_key=os.environ["SECRET_KEY"]; #This is an environment variable.
 def renderMain():
     session["firstName"]=request.form['firstName']
     session["lastName"]=request.form['lastName']
-    session["q1"]=request.form['q1']
-    session["q2"]=request.form['q2']
-    session["q3"]=request.form['q3']
+    session["q1"]=request.form['num_acids']
+    session["q2"]=request.form['thym=acid?']
+    session["q3"]=request.form['uran=acid?']
     return render_template('quiz.html')
 
 #@app.route('/startOver')

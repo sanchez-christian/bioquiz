@@ -10,24 +10,38 @@
 
     <h1>DNA</h1>
         <form action={{ url_for("renderMain") }} method="POST">
-            <p>Please select your favorite Web language:</p>
-              <input type="radio" id="html" name="fav_language" value="HTML">
-              <label for="html">HTML</label><br>
-              <input type="radio" id="css" name="fav_language" value="CSS">
-              <label for="css">CSS</label><br>
-              <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-              <label for="javascript">JavaScript</label>
+              First name:<br>
+              <input type="text" name="firstName">
+              <br>
+              Last name:<br>
+              <input type="text" name="lastName">
+              <input type="submit" value="Submit">
+
+              <br>
+
+            <p>How many DNA amino acid bases are there?</p>
+              <input type="radio" id="num_acids_5" name="num_acids" value="5">
+              <label for="num_acids_5">4</label><br>
+              <input type="radio" id="num_acids_7" name="num_acids" value="7">
+              <label for="num_acids_7">7</label><br>
+              <input type="radio" id="num_acids_4" name="num_acids" value="4">
+              <label for="num_acids_4">5</label><br><br>
             
               <br>  
             
-              <p>Please select your age:</p>
-              <input type="radio" id="age1" name="age" value="30">
-              <label for="age1">0 - 30</label><br>
-              <input type="radio" id="age2" name="age" value="60">
-              <label for="age2">31 - 60</label><br>  
-              <input type="radio" id="age3" name="age" value="100">
-              <label for="age3">61 - 100</label><br><br>
-              <input type="submit" value="Submit">
+              <p>Thymine is a DNA amino acid base.</p>
+              <input type="radio" class="true" name="thym=acid?" value="true">
+              <label for="true">True</label><br>
+              <input type="radio" class="false" name="thym=acid?" value="false">
+              <label for="false">False</label><br>
+            
+              <br>  
+            
+              <p>Uranine is a DNA amino acid base.</p>
+              <input type="radio" class="true" name="uran=acid?" value="true">
+              <label for="true">True</label><br>
+              <input type="radio" class="false" name="uran=acid?" value="false">
+              <label for="false">False</label><br>
             </form>
             
 
