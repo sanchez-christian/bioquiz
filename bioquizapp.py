@@ -13,13 +13,21 @@ app.secret_key=os.environ["SECRET_KEY"]; #This is an environment variable.
                                      #The value should be set in Heroku (Settings->Config Vars).  
                                      #To run locally, set in env.sh and include that file in gitignore so the secret key is not made public.
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def renderMain():
-    session["firstName"]=request.form['firstName']
-    session["lastName"]=request.form['lastName']
-    session["q1"]=request.form['num_acids']
-    session["q2"]=request.form['thym=acid?']
-    session["q3"]=request.form['uran=acid?']
+    if 'firstName' in request.form:
+        session["firstName"]=request.form['firstName']
+        session["lastName"]=request.form['lastName']
+    return render_template('name.html')
+
+@app.route('/quiz')
+def renderQuiz():
+    if 'num_acids' in request.form:
+        session["q1"]=request.form['num_acids']
+    if 'thym=acid?' in request.form:
+        session["q2"]=request.form['thym=acid?']
+    if 'uran=acid?' in request.form:
+        session["q3"]=request.form['uran=acid?']
     return render_template('quiz.html')
 
 #@app.route('/startOver')
@@ -34,4 +42,4 @@ def renderPage2():
     return render_template('page2.html')
     
 if __name__=="__main__":
-    app.run(debug=False)
+    app.run(debug=True)

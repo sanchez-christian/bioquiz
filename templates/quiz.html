@@ -9,16 +9,19 @@
 
 
     <h1>DNA</h1>
-        <form action={{ url_for("renderMain") }} method="POST">
+
+
+              <br>
+
+          {% if "firstName" not in session}
+            <form action={{ url_for("renderMain") }} method="POST">
               First name:<br>
               <input type="text" name="firstName">
               <br>
               Last name:<br>
               <input type="text" name="lastName">
-              <input type="submit" value="Submit">
-
               <br>
-
+          {% elif "q1" not in session%}
             <p>How many DNA amino acid bases are there?</p>
               <input type="radio" id="num_acids_5" name="num_acids" value="5">
               <label for="num_acids_5">4</label><br>
@@ -26,23 +29,33 @@
               <label for="num_acids_7">7</label><br>
               <input type="radio" id="num_acids_4" name="num_acids" value="4">
               <label for="num_acids_4">5</label><br><br>
-            
-              <br>  
-            
-              <p>Thymine is a DNA amino acid base.</p>
+          {% elif "q2" not in session%}
+            <p>Thymine is a DNA amino acid base.</p>
               <input type="radio" class="true" name="thym=acid?" value="true">
               <label for="true">True</label><br>
               <input type="radio" class="false" name="thym=acid?" value="false">
               <label for="false">False</label><br>
-            
-              <br>  
-            
-              <p>Uranine is a DNA amino acid base.</p>
+            <br>
+          {% else "q3" not in session%}
+            <p>Uranine is a DNA amino acid base.</p>
               <input type="radio" class="true" name="uran=acid?" value="true">
               <label for="true">True</label><br>
               <input type="radio" class="false" name="uran=acid?" value="false">
               <label for="false">False</label><br>
+              <input type="submit" value="Submit">
             </form>
+          {% endif %}
+
+
+
+            
+                
+            
+
+            
+                
+            
+
             
 
 
