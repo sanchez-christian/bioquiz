@@ -12,40 +12,38 @@
 
 
               <br>
+          {% if "q1" not in session%}
 
-          {% if "firstName" not in session}
-            <form action={{ url_for("renderMain") }} method="POST">
-              First name:<br>
-              <input type="text" name="firstName">
-              <br>
-              Last name:<br>
-              <input type="text" name="lastName">
-              <br>
-          {% elif "q1" not in session%}
             <p>How many DNA amino acid bases are there?</p>
+            <form action="/quiz" method="post">
               <input type="radio" id="num_acids_5" name="num_acids" value="5">
               <label for="num_acids_5">4</label><br>
               <input type="radio" id="num_acids_7" name="num_acids" value="7">
               <label for="num_acids_7">7</label><br>
               <input type="radio" id="num_acids_4" name="num_acids" value="4">
               <label for="num_acids_4">5</label><br><br>
+            <input type="submit" value="next">
           {% elif "q2" not in session%}
+          <form action="/quiz" method="post">
             <p>Thymine is a DNA amino acid base.</p>
               <input type="radio" class="true" name="thym=acid?" value="true">
               <label for="true">True</label><br>
               <input type="radio" class="false" name="thym=acid?" value="false">
               <label for="false">False</label><br>
             <br>
-          {% else "q3" not in session%}
+            <input type="submit" value="next">
+          {% else %}
+          <form action="/results" method="post">
             <p>Uranine is a DNA amino acid base.</p>
               <input type="radio" class="true" name="uran=acid?" value="true">
               <label for="true">True</label><br>
               <input type="radio" class="false" name="uran=acid?" value="false">
               <label for="false">False</label><br>
-              <input type="submit" value="Submit">
-            </form>
+          <input type="submit" value="Submit">
+
           {% endif %}
 
+        </form>
 
 
             

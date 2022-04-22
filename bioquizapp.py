@@ -1,5 +1,5 @@
 import os
-from flask import Flask, url_for, render_template, request
+from flask import Flask, render_template, request
 from flask import redirect
 from flask import session
 
@@ -20,7 +20,7 @@ def renderMain():
         session["lastName"]=request.form['lastName']
     return render_template('name.html')
 
-@app.route('/quiz')
+@app.route('/quiz', methods=['POST'])
 def renderQuiz():
     if 'num_acids' in request.form:
         session["q1"]=request.form['num_acids']
@@ -28,18 +28,24 @@ def renderQuiz():
         session["q2"]=request.form['thym=acid?']
     if 'uran=acid?' in request.form:
         session["q3"]=request.form['uran=acid?']
+    print(session)
     return render_template('quiz.html')
+
+@app.route('/results', methods=['POST'])
+def renderResults():
+    if 'num_acids' in request.form:
+        session["q1"]=request.form['num_acids']
+    if 'thym=acid?' in request.form:
+        session["q2"]=request.form['thym=acid?']
+    if 'uran=acid?' in request.form:
+        session["q3"]=request.form['uran=acid?']
+    return render_template('results.html')
 
 #@app.route('/startOver')
 #def startOver():
 #    session.clear() #clears variable values and creates a new session
 #    return redirect(url_for('renderMain')) # url_for('renderMain') could be replaced with '/'
 
-@app.route('/results',methods=['GET','POST'])
-def renderPage2():
-    session["firstName"]=request.form['firstName']
-    session["lastName"]=request.form['lastName']
-    return render_template('page2.html')
     
 if __name__=="__main__":
     app.run(debug=True)

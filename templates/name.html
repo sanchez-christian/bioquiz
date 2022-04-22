@@ -1,0 +1,24 @@
+
+{% extends "layout.html" %}
+
+{% set active_page = "Name" %}
+
+{% block title %}Name{% endblock %}
+
+{% block content %}
+
+
+    <h1>DNA</h1>
+
+
+              <br>
+
+            <form action="/quiz" method="POST">
+              First name:<br>
+              <input type="text" name="firstName">
+              <br>
+              Last name:<br>
+              <input type="text" name="lastName">
+              <input type="submit" value="Submit">
+            </form>
+{% endblock %}
