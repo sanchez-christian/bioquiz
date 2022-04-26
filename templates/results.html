@@ -7,12 +7,12 @@
 
 {% block content %}
 
-{{score}}
+{% set score = 0 %}
     <h1>Results for {{ session['lastName']}}, {{ session['firstName']}}</h1>
         
         <!--https://jinja.palletsprojects.com/en/3.1.x/templates/#if-->
         {% if session['q1'] == '4' %}
-            Question 1 is correct.{{score+1}}
+            Question 1 is correct.{% set score = score+1 %}
         {% else %}
             Question 1 is incorrect.
         {% endif %}
@@ -20,7 +20,7 @@
         <br>
 
         {% if session['q2'] == 'true' %}
-            Question 2 is correct.{{score+1}}
+            Question 2 is correct.{% set score = score+1 %}
         {% else %}
             Question 2 is incorrect.
         {% endif %}
@@ -28,12 +28,16 @@
         <br>
 
         {% if session['q3'] == 'false' %}
-            Question 3 is correct. {{score+1}}
+            Question 3 is correct. {% set score = score+1 %}
         {% else %}
             Question 3 is incorrect.
         {% endif %}
 
         <br>
+
+        <p>
+            score: {{score}}/3
+        </p>
 
         <!--https://jinja.palletsprojects.com/en/3.0.x/templates/-->
 

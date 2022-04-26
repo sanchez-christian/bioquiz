@@ -23,25 +23,18 @@ def renderQuiz():
     if 'firstName' in request.form:
         session["firstName"]=request.form['firstName']
         session["lastName"]=request.form['lastName']
-    if 'num_acids' in request.form:
+    if 'num_acids' in request.form and "q1" not in session:
         session["q1"]=request.form['num_acids']
-    if 'thym=acid?' in request.form:
+    if 'thym=acid?' in request.form and "q2" not in session:
         session["q2"]=request.form['thym=acid?']
-    if 'uran=acid?' in request.form:
+    if 'uran=acid?' in request.form and "q3" not in session:
         session["q3"]=request.form['uran=acid?']
     print(session)
     return render_template('quiz.html')
 
 @app.route('/results', methods=['POST'])
 def renderResults():
-    if 'firstName' in request.form:
-        session["firstName"]=request.form['firstName']
-        session["lastName"]=request.form['lastName']
-    if 'num_acids' in request.form:
-        session["q1"]=request.form['num_acids']
-    if 'thym=acid?' in request.form:
-        session["q2"]=request.form['thym=acid?']
-    if 'uran=acid?' in request.form:
+    if 'uran=acid?' in request.form and "q3" not in session:
         session["q3"]=request.form['uran=acid?']
     print(session)
     return render_template('results.html')
